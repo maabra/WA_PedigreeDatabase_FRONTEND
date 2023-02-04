@@ -1,8 +1,8 @@
 <template>
   <div class="row">
-    <div1 class="row">
+    <div class="row">
       <h2 class="text-center mb-5">Podatci o psu</h2>
-    </div1>
+    </div>
     <div class="row">
       <div class="col-4"></div>
       <div class="col-5">
@@ -139,6 +139,17 @@
               placeholder="Unesite ime djeda oca psa"
             />
           </div>
+          <div class="form-group">
+            <label for="dogPedNrField">Broj rodovnice: </label>
+            <input
+              v-model="dogPedNr"
+              type="name"
+              class="form-control"
+              id="dogPedNrField"
+              aria-describedby="dogPedNrHelp"
+              placeholder="Unesite broj rodovnice"
+            />
+          </div>
 
           <button
             type="submit"
@@ -155,7 +166,7 @@
 </template>
 
 <script>
-import {postdog} from "@/services";
+import {dogs} from "@/services";
 
 export default {
   name: "AddDog",
@@ -173,12 +184,13 @@ export default {
       dogGrandpaMother: "",
       dogGrandmaFather: "",
       dogGrandpaFather: "",
+      dogPedNr: "",
     };
   },
   methods: {
     async addDog() {
       try {
-        let adddog = await postdog.addDog(
+        let adddog = await dogs.addDog(
           this.dogName,
           this.dogSex,
           this.dogBirth,
@@ -191,6 +203,7 @@ export default {
           this.dogGrandpaMother,
           this.dogGrandmaFather,
           this.dogGrandpaFather,
+          this.dogPedNr,
         );
         console.log(adddog);
         this.$router.push({ name: "home" });

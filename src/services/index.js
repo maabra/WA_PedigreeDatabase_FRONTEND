@@ -5,8 +5,8 @@ let service = axios.create({
   timeout: 1000,
 });
 
-let postdog = {
-  async addDog(dogName, dogSex, dogBirth, dogKennel,dogCacib,dogCac,dogMother,dogFather,dogGrandmaMother,dogGrandpaMother,dogGrandmaFather,dogGrandpaFather) {
+let dogs = {
+  async addDog(dogName, dogSex, dogBirth, dogKennel,dogCacib,dogCac,dogMother,dogFather,dogGrandmaMother,dogGrandpaMother,dogGrandmaFather,dogGrandpaFather,dogPedNr) {
     let dog = {
       dogName,
       dogSex,
@@ -20,46 +20,35 @@ let postdog = {
       dogGrandpaMother,
       dogGrandmaFather,
       dogGrandpaFather,
+      dogPedNr,
     };
-    await service.post("/adddog", dog).then((response) => {
+    await service.post("/api/postDog", dog).then((response) => {
       console.log(response);
     });
 
     return true;
   },
-
-  async getAll(searchTerm) {
-    let options = {};
-
-    if (searchTerm) {
-      options.params = {
-        _any: searchTerm,
-      };
-    }
-},
-
-
-  async getOne(id) {
-    let response = await service.get(`/dog/${id}`);
-
-    let dog = response.data;
-
-    return {
-        id: dog._id,
-        dogName: dog.dogName,
-        dogSex: dog.dogSex,
-        dogBirth: dog.dogBirth,
-        dogKennel: dog.dogKennel,
-        dogCacib: dog.dogCacib,
-        dogCac: dog.dogCac,
-        dogMother: dog.dogMother,
-        dogFather: dog.dogFather,
-        dogGrandmaMother: dog.dogGrandmaMother,
-        dogGrandpaMother: dog.dogGrandpaMother,
-        dogGrandmaFather: dog.dogGrandmaFather,
-        dogGrandpaFather: dog.dogGrandpaFather,
-    };
-  },
 };
 
-export { service, postdog };
+let getAllDogs = {
+async getAllDogs() {
+  let dogs = await service.get("/getAll");
+  //delete dogs.dogName;
+  delete dogs.dogSex;
+  delete dogs.dogBirth;
+  //delete dogs.dogKennel;
+  delete dogs.dogCacib;
+  delete dogs.dogCac;
+  delete dogs.dogMother;
+  delete dogs.dogFather;
+  delete dogs.dogGrandmaMother;
+  delete dogs.dogGrandpaMother;
+  delete dogs.dogGrandmaFather;
+  delete dogs.dogGrandpaFather;
+  //delete dogPedNr;
+
+  return dogs.data;
+}
+};
+
+export { service,dogs,getAllDogs };
