@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="row">
-      <h2 class="text-center mb-5">Podatci o psu</h2>
+      <h1 class="text-center mb-5">Ovdje unesite podatke o psu</h1>
     </div>
     <div class="row">
       <div class="col-4"></div>

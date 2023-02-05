@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="row">
     <h2 class="text-center mb-5">Početna stranica</h2>
     <p>Fokus projekta bi bio vođenje liste rodovnica/pedigrea čistokrvne rase psa te usporedba pasa da nema inbreedinga (incesta po obiteljskom stablu).</p>
     <p>Vodi se posebna lista pasa sa dobivenim CACIB-ima i CAC-ima kategoriziranih po jačini postignuća i broju postignuća.</p>
