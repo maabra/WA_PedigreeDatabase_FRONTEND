@@ -1,18 +1,18 @@
 <template>
     <table>
       <tr>
-        <td rowspan="2">Parent 1</td>
-        <td>Grandparent 1-1</td>
+        <td rowspan="2">{{ dog.dogMother }}</td>
+        <td>{{ dog.dogGrandmaMother }}</td>
       </tr>
       <tr>
-        <td>Grandparent 1-2</td>
+        <td>{{ dog.dogGrandpaMother }}</td>
       </tr>
       <tr>
-        <td rowspan="2">Parent 2</td>
-        <td>Grandparent 2-2</td>
+        <td rowspan="2">{{ dog.dogFather }}</td>
+        <td>{{ dog.dogGrandmaFather }}</td>
       </tr>
       <tr>
-        <td>Grandparent 2-2</td>
+        <td>{{ dog.dogGrandpaFather }}</td>
       </tr>
       <tr>
         <td></td>
@@ -25,14 +25,16 @@
     name: 'PedigreeTable',
     data() {
       return {
-        parent1: 'Parent 1',
-        parent2: 'Parent 2',
-        grandparent1_1: 'Grandparent 1-1',
-        grandparent1_2: 'Grandparent 1-2',
-        grandparent1_3: 'Grandparent 1-3',
-        grandparent2_1: 'Grandparent 2-1',
-        grandparent2_2: 'Grandparent 2-2',
-        grandparent2_3: 'Grandparent 2-3',
+        dog: [
+  {
+    dogMother: "(ime majke)",
+    dogFather: "(ime oca)",
+    dogGrandmaMother: "(ime majčine bake)",
+    dogGrandpaMother: "(ime majčinog djeda)",
+    dogGrandmaFather: "(ime očeve bake)",
+    dogGrandpaFather: "(ime očevog djeda)",
+  },
+] 
       };
     },
   };

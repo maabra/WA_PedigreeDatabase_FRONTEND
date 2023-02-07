@@ -36,7 +36,7 @@ async getAllDog() {
   .then(response => {
     this.dogs = response.data;
   });
-  //delete dogs.dogName;
+  /* //delete dogs.dogName;
   delete dogs.dogSex;
   delete dogs.dogBirth;
   //delete dogs.dogKennel;
@@ -48,10 +48,20 @@ async getAllDog() {
   delete dogs.dogGrandpaMother;
   delete dogs.dogGrandmaFather;
   delete dogs.dogGrandpaFather;
-  //delete dogs.dogPedNr;
+  //delete dogs.dogPedNr;*/
 
   return dogs;
 }
 };
 
-export { service,dogs,getAllDogs };
+let getOne = {
+  async getOne(_id) {
+    
+  let dogs = await service.get(`/api/getOne/:${_id}`)
+  .then(response => {
+    this.dogs = response.data;
+    return dogs;
+  });
+  }};
+
+export { service,dogs,getAllDogs, getOne };

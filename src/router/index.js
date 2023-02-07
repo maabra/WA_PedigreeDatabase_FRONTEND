@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+//import DogDetails from '../components/DogDetails.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,7 +17,7 @@ const routes = [
       import(/* webpackChunkName: "Compare" */ "../views/CompareView.vue"),
   },
   {
-    path: "/dog/:id",
+    path: "/dog/:_id",
     name: "dog",
     component: () =>
       import(/* webpackChunkName: "Dog" */ "../views/DogView.vue"),
