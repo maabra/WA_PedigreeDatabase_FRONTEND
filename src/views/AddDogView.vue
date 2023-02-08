@@ -1,10 +1,10 @@
 <template>
   <div class="row">
     <div class="row">
-      <h1 class="text-center mb-5">Ovdje unesite podatke o psu</h1>
+      <h2 class="text-center mb-3">Ovdje unesite podatke o psu</h2>
     </div>
     <div class="row">
-      <div class="col-4"></div>
+      <center>
       <div class="col-5">
           <form @submit.prevent="addDog" class="mb-5">
           <div class="form-group">
@@ -96,47 +96,47 @@
             />
           </div>
           <div class="form-group">
-            <label for="dogGrandmaMotherField">Ime bake majke psa: </label>
+            <label for="dogGrandmaMotherField">Ime bake s majčine strane psa: </label>
             <input
               v-model="dogGrandmaMother"
               type="name"
               class="form-control"
               id="dogGrandmaMotherField"
               aria-describedby="dogGrandmaMotherHelp"
-              placeholder="Unesite ime bake majke psa"
+              placeholder="Unesite ime bake s majčine strane psa"
             />
           </div>
           <div class="form-group">
-            <label for="dogGrandpaMotherField">Ime djeda majke psa: </label>
+            <label for="dogGrandpaMotherField">Ime djeda s majčine strane psa: </label>
             <input
               v-model="dogGrandpaMother"
               type="name"
               class="form-control"
               id="dogGrandpaMotherField"
               aria-describedby="dogGrandpaMotherHelp"
-              placeholder="Unesite ime djeda majke psa"
+              placeholder="Unesite ime djeda s majčine strane psa"
             />
           </div>
           <div class="form-group">
-            <label for="dogGrandmaFatherField">Ime bake oca psa: </label>
+            <label for="dogGrandmaFatherField">Ime bake s očeve strane psa: </label>
             <input
               v-model="dogGrandmaFather"
               type="name"
               class="form-control"
               id="dogGrandmaFatherField"
               aria-describedby="dogGrandmaFatherHelp"
-              placeholder="Unesite ime bake oca psa"
+              placeholder="Unesite ime bake s očeve strane psa"
             />
           </div>
           <div class="form-group">
-            <label for="dogGrandpaFatherField">Ime djeda oca psa: </label>
+            <label for="dogGrandpaFatherField">Ime djeda s očeve strane psa: </label>
             <input
               v-model="dogGrandpaFather"
               type="name"
               class="form-control"
               id="dogGrandpaFatherField"
               aria-describedby="dogGrandpaFatherHelp"
-              placeholder="Unesite ime djeda oca psa"
+              placeholder="Unesite ime djeda s očeve strane psa"
             />
           </div>
           <div class="form-group">
@@ -153,7 +153,7 @@
 
           <button
             type="submit"
-            class="btn"
+            class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -161,6 +161,7 @@
           </button>
         </form>
       </div>
+    </center>
     </div>
   </div>
 </template>

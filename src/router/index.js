@@ -22,7 +22,6 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "Dog" */ "../views/DogView.vue"),
       props: true,
-
   },
   {
     path: "/list",

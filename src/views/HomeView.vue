@@ -6,9 +6,9 @@
 <div class="row">
 
     <h2 class="mb-5">Pedigree database</h2>
-    <p>Fokus projekta bi bio vođenje liste rodovnica/pedigrea čistokrvne rase psa te usporedba pasa da nema inbreedinga (incesta po obiteljskom stablu).</p>
-    <p>Vodi se posebna lista pasa sa dobivenim CACIB-ima i CAC-ima kategoriziranih po jačini postignuća i broju postignuća.</p>
-    <p>Na "profilu" psa stoji ime psa, spol, datum štenjenja te sama rodovnica tj. obiteljsko stablo.</p>
+    <p>Fokus projekta bi bio vođenje liste rodovnica/pedigrea čistokrvne rase psa te usporedba pasa da nema "inbreedinga" (incesta u obiteljskom stablu).</p>
+    <p>Vodi se lista pasa sa dobivenim CACIB-ima i CAC-ima kategoriziranih po broju postignuća.</p>
+    <p>Na detaljima psa stoji ime psa, spol, datum štenjenja te sama rodovnica tj. obiteljsko stablo.</p>
     <p>Postoji obrazac koji potencijalni korisnici popunjuju da postave svog psa na stranicu.</p>
 
   </div>
