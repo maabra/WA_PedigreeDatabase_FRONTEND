@@ -1,23 +1,23 @@
 <template>
   <div>
     <div>
-      <h2 class="text-center mb-5">
-        Pregled podataka o psu i mjesto gdje se mogu uređivati podatci
+      <h2 class="text-center mb-3">
+        Pregled podataka o psu i mjesto
+        gdje se mogu uređivati podatci
       </h2>
-      <h1>My Pedigree</h1>
+      <h3 class="text-center mb-2">Pedigree psa</h3>
       <PedigreeTable />
     </div>
 
     <div>
-      <h1>Dog Details</h1>
-      <p>Ime psa: {{ dogs.dogName }}</p>
-      <p>Ime uzgajivačnice: {{ dogs.dogKennel }}</p>
+      <h3 class="text-center mb-2">Detalji psa</h3>
+      <p class="text-center">Ime psa: {{ dogs.dogName }}</p>
+      <p class="text-center">Ime uzgajivačnice: {{ dogs.dogKennel }}</p>
       
-      <p>Spol: {{ dogs.dogSex }}</p>
-      <p>Datum rođenja: {{ dogs.dogBirth }}</p>
-      <p>Broj osvojenih CACIB-a: {{ dogs.dogCacib }}</p>
-      <p>Broj osvojenih CAC-a: {{ dogs.dogCac }}</p>
-      <!-- Add more details here -->
+      <p class="text-center">Spol: {{ dogs.dogSex }}</p>
+      <p class="text-center">Datum rođenja: {{ dogs.dogBirth }}</p>
+      <p class="text-center">Broj osvojenih CACIB-a: {{ dogs.dogCacib }}</p>
+      <p class="text-center">Broj osvojenih CAC-a: {{ dogs.dogCac }}</p>
     </div>
   </div>
 </template>
@@ -70,20 +70,14 @@ export default {
 };
 </script>
 
-<style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style lang="scss">
+  div {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    padding: 5px;
+  }
+
 </style>

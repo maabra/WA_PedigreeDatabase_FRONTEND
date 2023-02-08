@@ -5,14 +5,24 @@
         Lista svih pasa
       </h2>
     </div>
-    <ul>
-      <li v-for="dog in dogs" :key="dog._id">
+    <select v-model="sortby" class="text-center mb-2">
+      <option value="dogName">Ime</option>
+      <option value="dogCacib">CACIB</option>
+      <option value="dogCac">CAC</option>
+  </select>
+  
+  <select v-model="sort">
+    <option value="asc">Uzlazno</option>
+    <option value="dec">Silazno</option>
+  </select>
+      <p class="text-center mb-2" v-for="dog in sortedDogs" :key="JSON.stringify(dog)">
         <a class="btn btn-primary" @click="setDogId(dog._id)">{{ dog.dogName }}
-          {{ dog.dogKennel }}
+          {{ dog.dogKennel }} |
+          CAC: {{ dog.dogCac }}
+          CACIB: {{ dog.dogCacib }}
           ({{ dog.dogPedNr }})</a
         >
-      </li>
-    </ul>
+        </p>
   </div>
 </template>
 
@@ -23,21 +33,15 @@
 */
 
 <script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
-<script>
 import { service } from "@/services";
 
 export default {
   name: "ListView",
   data() {
     return {
+      
+      sortby: 'dogName',
+      sort: 'asc',
       dogs: [],
       /*testlist: [
         { id: 1, name: "Test1" },
@@ -65,5 +69,25 @@ export default {
     },
 
   },
+  
+  computed: {
+    sortedDogs() {
+      return this.dogs.slice(0).sort((a, b) =>
+      (this.sort == 'asc') ? a[this.sortby].localeCompare(b[this.sortby]) : b[this.sortby].localeCompare(a[this.sortby])
+      );
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+  div {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    padding: 5px;
+  }
+
+</style>

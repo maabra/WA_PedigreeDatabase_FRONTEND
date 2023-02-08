@@ -1,23 +1,29 @@
 <template>
-    <table>
+  <div>
+    <center>
+  <table>
       <tr>
-        <td rowspan="2">{{ dog.dogMother }}</td>
-        <td>{{ dog.dogGrandmaMother }}</td>
+        <td rowspan="2">
+          
+      <p v-for="dog in dog" :key="dog._id">{{ dog.dogMother }}</p></td>
+        <td><p v-for="dog in dog" :key="dog._id">{{ dog.dogGrandmaMother }}</p></td>
       </tr>
       <tr>
-        <td>{{ dog.dogGrandpaMother }}</td>
+        <td><p v-for="dog in dog" :key="dog._id">{{ dog.dogGrandpaMother }}</p></td>
       </tr>
       <tr>
-        <td rowspan="2">{{ dog.dogFather }}</td>
-        <td>{{ dog.dogGrandmaFather }}</td>
+        <td rowspan="2"><p v-for="dog in dog" :key="dog._id">{{ dog.dogFather }}</p></td>
+        <td><p v-for="dog in dog" :key="dog._id">{{ dog.dogGrandmaFather }}</p></td>
       </tr>
       <tr>
-        <td>{{ dog.dogGrandpaFather }}</td>
+        <td><p v-for="dog in dog" :key="dog._id">{{ dog.dogGrandpaFather }}</p></td>
       </tr>
       <tr>
         <td></td>
       </tr>
     </table>
+  </center>
+</div>
   </template>
   
   <script>

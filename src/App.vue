@@ -4,21 +4,18 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">Naslovnica</router-link>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <router-link to="/compare">Compare</router-link>
+            <router-link to="/compare">Usporedba</router-link>
           </div>
           <div class="navbar-nav">
-            <router-link to="/dog">Dog</router-link>
-          </div>
-          <div class="navbar-nav">
-            <router-link to="/list">List</router-link>
+            <router-link to="/list">Lista pasa</router-link>
           </div>
         </div>
         <div class="navbar-nav">
-          <router-link to="/adddog">Add Dog</router-link>
+          <router-link to="/adddog">Dodaj psa</router-link>
         </div>
       </div>
     </nav>
