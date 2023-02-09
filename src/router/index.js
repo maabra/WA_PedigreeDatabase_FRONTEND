@@ -35,6 +35,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "AddDog" */ "../views/AddDogView.vue"),
   },
+  {
+    path: "/updateDog/:_id",
+    name: "updateDog",
+    component: () =>
+      import(/* webpackChunkName: "UpdateDog" */ "../views/UpdateDogView.vue"),
+  },
 ];
 
 const router = new VueRouter({

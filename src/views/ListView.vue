@@ -4,24 +4,26 @@
       <h2 class="text-center mb-5">Lista svih pasa</h2>
     </div>
     Sortiranje:
-    <select v-model="sortby" class="text-center mb-2">
+    <select v-model="sortby" class="text-right m-1">
       <option value="dogName">Ime</option>
       <option value="dogCacib">CACIB</option>
       <option value="dogCac">CAC</option></select
-    >·<select v-model="sort">
+    ><select v-model="sort" class="text-right m-1">
       <option value="asc">Uzlazno</option>
       <option value="dec">Silazno</option>
     </select>
-    <p
+    <div
       class="text-center mb-2"
       v-for="dog in sortedDogs"
       :key="JSON.stringify(dog)"
     >
       <a class="btn btn-primary" @click="setDogId(dog._id)"
-        >{{ dog.dogName }} {{ dog.dogKennel }} | CAC: {{ dog.dogCac }} CACIB:
-        {{ dog.dogCacib }} ({{ dog.dogPedNr }})</a
+        >{{ dog.dogName }} {{ dog.dogKennel }}</a
       >
-    </p>
+        CAC: {{ dog.dogCac }} CACIB: {{ dog.dogCacib }} ({{
+          dog.dogPedNr
+        }})
+      </div>
   </div>
 </template>
 
@@ -32,7 +34,7 @@
 */
 
 <script>
-import { service } from "@/services";
+import { dogsAll } from "@/services";
 
 export default {
   name: "ListView",
@@ -50,15 +52,27 @@ export default {
   },
 
   created() {
-    this.fetchDogs();
+    this.allDogs();
+    //this.fetchDogs();
   },
   methods: {
-    async fetchDogs() {
+    
+    async allDogs() {
+      try {
+        let response = await dogsAll.allDogs(
+        );   
+        this.dogs = response.data;
+        
+console.log(this.dogs);
+      } catch (error) {
+        console.log(error);
+      }   },
+    /*async fetchDogs() {
       const response = await service.get("/api/getAll");
       this.dogs = response.data;
 
       console.log(this.dogs);
-    },
+    },*/
 
     setDogId(_id) {
       localStorage.setItem("dogId", _id);
@@ -89,5 +103,13 @@ div {
   text-align: center;
   color: #2c3e50;
   padding: 5px;
+}
+select {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: #2c3e50;
+  padding: 3px;
 }
 </style>
