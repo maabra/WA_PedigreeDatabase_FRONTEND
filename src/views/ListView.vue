@@ -18,11 +18,10 @@
       :key="JSON.stringify(dog)"
     >
       <a class="btn btn-primary" @click="setDogId(dog._id)"
-        >{{ dog.dogName }} {{ dog.dogKennel }}</a
-      >
-        CAC: {{ dog.dogCac }} CACIB: {{ dog.dogCacib }} ({{
+        >{{ dog.dogName }} {{ dog.dogKennel }} |  CAC: {{ dog.dogCac }} CACIB: {{ dog.dogCacib }} ({{
           dog.dogPedNr
-        }})
+        }})</a
+      >
       </div>
   </div>
 </template>

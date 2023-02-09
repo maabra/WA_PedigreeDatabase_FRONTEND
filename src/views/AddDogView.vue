@@ -167,7 +167,6 @@
             >
               Pošalji
             </button>
-            <v-alert type="success"></v-alert>
           </form>
         </div>
       </center>

@@ -1,31 +1,38 @@
 <template>
   <div>
     <div>
-      <h2 class="text-center mb-5">Usporedba svih pasa</h2>
+      <h2 class="text-center mb-5">Usporedba "inbreedinga" svih pasa</h2>
     </div>
-    Odabir oca:
-    <select v-model="sortby" class="text-right m-1">
-      <option
-        value="dogName"
-        v-for="dog in dogs"
-        :key="JSON.stringify(dog)"
+    <div>
+      Odabir mužjaka:
+      <select v-model="m_dog" class="text-right m-2">
+        <option v-for="dog in filteredDogsM" :key="dog._id" :value="dog">
+          {{ dog.dogName }} {{ dog.dogKennel }}
+        </option>
+      </select>
+      <p class="text-center">Pedigree od: {{ m_dog.dogName }} <PedigreeTable :dogs="m_dog" ></PedigreeTable></p>
+    </div>
+    <div>
+      Odabir ženke:
+      <select v-model="f_dog" class="text-right m-2">
+        <option v-for="dog in filteredDogsF" :key="dog._id" :value="dog">
+          {{ dog.dogName }} {{ dog.dogKennel }}
+        </option>
+      </select>
+      <p class="text-center">Pedigree od: {{ f_dog.dogName }} <PedigreeTable :dogs="f_dog" ></PedigreeTable></p>
+
+    </div>
+    <div>
+      <a class="btn btn-primary" @click="confirmSelection(f_dog, m_dog)"
+        >Izvrši usporedbu</a
       >
-        {{ dog.dogName }} {{ dog.dogKennel }}
-      </option></select
-    >Odabir majke:
-    <select v-model="sortby" class="text-right m-1">
-      <option
-        value="dogName"
-        v-for="dog in dogs"
-        :key="JSON.stringify(dog)"
-      >
-        {{ dog.dogName }} {{ dog.dogKennel }}
-      </option>
-    </select>
+    </div>
   </div>
 </template>
 
 <script>
+import PedigreeTable from "../components/PedigreeTable.vue";
+
 import { dogsAll } from "@/services";
 
 export default {
@@ -33,12 +40,17 @@ export default {
   data() {
     return {
       dogs: [],
-      sortby: "Odaberite",
+      dogs_f: [],
+      dogs_m: [],
+      m_dog: [],
+      f_dog: [],
       sex_m: "M",
-      sex_f: "F",
+      sex_f: "Ž",
     };
   },
-
+  components: {
+    PedigreeTable,
+  },
   created() {
     this.allDogs();
   },
@@ -54,14 +66,54 @@ export default {
       }
     },
 
-    filteredDogsM() {
-      if (!this.selectedSex) return this.dogs;
-      return this.dogs.filter((dog) => dog.sex === this.selectedSex);
-    },
     setDogId(_id) {
       localStorage.setItem("dogId", _id);
+    },
 
-      this.$router.push({ name: "dog", params: { _id } });
+    confirmSelection(f_dog, m_dog) {
+      console.log(this.f_dog, this.m_dog);
+      let percentage = 0;
+      if (f_dog.dogMother === m_dog.dogMother) {
+        percentage += 25;
+      }
+      if (f_dog.dogFather === m_dog.dogFather) {
+        percentage += 25;
+      }
+      if (f_dog.dogGrandmaMother === m_dog.dogGrandmaMother) {
+        percentage += 12.5;
+      }
+      if (f_dog.dogGrandmaFather === m_dog.dogGrandmaMother) {
+        percentage += 12.5;
+      }
+      if (f_dog.dogGrandmaFather === m_dog.dogGrandmaFather) {
+        percentage += 12.5;
+      }
+      if (f_dog.dogGrandpaMother === m_dog.dogGrandpaMother) {
+        percentage += 12.5;
+      }
+      if (f_dog.dogGrandpaFather === m_dog.dogGrandpaMother) {
+        percentage += 12.5;
+      }
+      if (f_dog.dogGrandpaFather === m_dog.dogGrandpaFather) {
+        percentage += 12.5;
+      }
+      console.log(percentage);
+      let odgovor = "Postotak inbreedinga iznosi " + percentage + " %";
+
+      console.log(odgovor);
+      alert(odgovor);
+    },
+  },
+  computed: {
+    filteredDogsF() {
+      let dogs_f = this.dogs.filter((dogs) => dogs.dogSex === this.sex_f);
+      //console.log("ovo su zenke" + dogs_f);
+      return dogs_f;
+    },
+    filteredDogsM() {
+      let dogs_m = this.dogs.filter((dogs) => dogs.dogSex === this.sex_m);
+      //console.log("ovo su muski" + dogs_m);
+      return dogs_m;
     },
   },
 };

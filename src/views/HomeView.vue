@@ -11,23 +11,23 @@
 
       <div class="row">
         <h2 class="mb-5">Pedigree database</h2>
-        <p>
+        <pl>
           Fokus projekta bi bio vođenje liste rodovnica/pedigrea čistokrvne rase
           psa te usporedba pasa da nema "inbreedinga" (incesta u obiteljskom
           stablu).
-        </p>
-        <p>
+        </pl>
+        <pl>
           Vodi se lista pasa sa dobivenim CACIB-ima i CAC-ima kategoriziranih po
           broju postignuća.
-        </p>
-        <p>
+        </pl>
+        <pl>
           Na detaljima psa stoji ime psa, spol, datum štenjenja te sama
           rodovnica tj. obiteljsko stablo.
-        </p>
-        <p>
+        </pl>
+        <pl>
           Postoji obrazac koji potencijalni korisnici popunjuju da postave svog
           psa na stranicu.
-        </p>
+        </pl>
       </div>
     </center>
   </div>
@@ -62,7 +62,7 @@ div {
   padding: 5px;
 }
 
-p {
+pl {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
