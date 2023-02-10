@@ -41,15 +41,10 @@
               />
             </div>
             <div class="form-group">
-              <label for="dogKennelField">Ime uzgajivačnice: </label>
-              <input
-                v-model="dogKennel"
-                type="name"
-                class="form-control"
-                id="dogKennelField"
-                aria-describedby="dogKennelHelp"
-                placeholder="Unesite ime uzgajivačnice"
-              />
+              <label for="dogKennelField">Ime uzgajivačnice: </label></div><div>
+              <select v-model="dogKennel">
+                <option v-for="kennel in kennels" :key="JSON.stringify(kennel)" :value="kennel._id">{{kennel.nameKennel}}</option>
+                </select>
             </div>
             <div class="form-group">
               <label for="dogCacibField">Broj osvojenih CACIB-a: </label>
@@ -175,7 +170,7 @@
 </template>
 
 <script>
-import { dogAdd } from "@/services";
+import { dogAdd, kennelsAll } from "@/services";
 
 export default {
   name: "AddDog",
@@ -194,9 +189,23 @@ export default {
       dogGrandmaFather: "",
       dogGrandpaFather: "",
       dogPedNr: "",
+      kennels: [],
     };
   },
+  created() {
+    this.allKennels();
+  },
   methods: {
+    async allKennels() {
+      try {
+        let response = await kennelsAll.allKennels();
+        this.kennels = response.data;
+
+        console.log(this.kennels);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async addDog() {
       try {
         let adddog = await dogAdd.addDog(
@@ -221,8 +230,9 @@ export default {
         console.log(error);
       }
     },
+    
   },
-};
+  };
 </script>
 
 <style lang="scss">

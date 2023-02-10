@@ -8,10 +8,13 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
+            <router-link to="/list-dogs">Lista pasa</router-link>
+          </div>
+          <div class="navbar-nav">
             <router-link to="/compare">Usporedba</router-link>
           </div>
           <div class="navbar-nav">
-            <router-link to="/list">Lista pasa</router-link>
+            <router-link to="/list-kennels">Lista uzgajivačnica</router-link>
           </div>
         </div>
         <div class="navbar-nav">

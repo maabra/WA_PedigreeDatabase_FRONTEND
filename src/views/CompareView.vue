@@ -7,7 +7,7 @@
       Odabir mužjaka:
       <select v-model="m_dog" class="text-right m-2">
         <option v-for="dog in filteredDogsM" :key="dog._id" :value="dog">
-          {{ dog.dogName }} {{ dog.dogKennel }}
+          {{ dog.dogName }}
         </option>
       </select>
       <p class="text-center">Pedigree od: {{ m_dog.dogName }} <PedigreeTable :dogs="m_dog" ></PedigreeTable></p>
@@ -16,7 +16,7 @@
       Odabir ženke:
       <select v-model="f_dog" class="text-right m-2">
         <option v-for="dog in filteredDogsF" :key="dog._id" :value="dog">
-          {{ dog.dogName }} {{ dog.dogKennel }}
+          {{ dog.dogName }}
         </option>
       </select>
       <p class="text-center">Pedigree od: {{ f_dog.dogName }} <PedigreeTable :dogs="f_dog" ></PedigreeTable></p>

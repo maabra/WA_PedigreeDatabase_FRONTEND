@@ -110,7 +110,7 @@ let dogUpdate = {
   };*/
 let dogsAll = {
   async allDogs() {
-    let response = await service.get("/api/getAll");
+    let response = await service.get("/api/getAllDogs");
     /* //delete dogs.dogName;
   delete dogs.dogSex;
   delete dogs.dogBirth;
@@ -128,6 +128,12 @@ let dogsAll = {
     return response;
   },
 };
+let kennelsAll = {
+  async allKennels() {
+    let response = await service.get("/api/getAllKennels");
+    return response;
+  },
+};
 
 let dogFetch = {
   async fetchDog(_id) {
@@ -142,4 +148,19 @@ let dogDelete = {
     return response;
   },
 };
-export { service, dogAdd, dogsAll, dogFetch, dogUpdate, dogDelete };
+
+let kennelFetch = {
+  async fetchKennel(_id) {
+    let response = await service.get("/api/getOneKennel/" + _id);
+    return response;
+  },
+};
+
+/*let dogKennelFetch = {
+  async fetchKennelDog(_id) {
+    let response = await service.get("/api/getDogKennel/" + _id);
+    return response;
+  },
+};*/
+
+export { service, dogAdd, dogsAll, dogFetch, dogUpdate, dogDelete, kennelFetch, kennelsAll, /*dogKennelFetch*/ };

@@ -24,10 +24,23 @@ const routes = [
       props: true,
   },
   {
-    path: "/list",
-    name: "list",
+    path: "/kennel/:_id",
+    name: "kennel",
     component: () =>
-      import(/* webpackChunkName: "List" */ "../views/ListView.vue"),
+      import(/* webpackChunkName: "Dog" */ "../views/KennelView.vue"),
+  },
+  {
+    path: "/list-dogs",
+    name: "list-dogs",
+    component: () =>
+      import(/* webpackChunkName: "List" */ "../views/ListViewDog.vue"),
+  },
+  
+  {
+    path: "/list-kennels",
+    name: "list-kennels",
+    component: () =>
+      import(/* webpackChunkName: "List" */ "../views/ListViewKennel.vue"),
   },
   {
     path: "/addDog",

@@ -1,15 +1,13 @@
 <template>
   <div>
     <div>
-      <h2 class="text-center mb-5">
-        Pregled podataka o psu i uređivanje istih
-      </h2>
-      <h3 class="text-center mb-2">Pedigree psa</h3>
+      <h2 class="text-center mb-5">Pregled i uređivanje podataka o psu</h2>
+      <h3 class="text-center mb-2">Pedigree</h3>
       <PedigreeTable :dogs="dogs"> </PedigreeTable>
     </div>
 
     <div>
-      <h3 class="text-center mb-2">Detalji psa</h3>
+      <h3 class="text-center mb-2">Detalji</h3>
 
       <center>
         <table class="m-2" text-align: left>
@@ -17,7 +15,8 @@
             <p><b>Ime psa:</b> {{ dogs.dogName }}</p>
           </tr>
           <tr>
-            <p><b>Ime uzgajivačnice:</b> {{ dogs.dogKennel }}</p>
+            <p><b>Ime uzgajivačnice:</b> {{ 
+              kennels.nameKennel }}</p>
           </tr>
           <tr>
             <p><b>Spol:</b> {{ dogs.dogSex }}</p>
@@ -47,63 +46,78 @@
   <script>
 import PedigreeTable from "../components/PedigreeTable.vue";
 
-import { dogFetch, dogDelete } from "@/services";
+import { dogFetch, dogDelete, kennelFetch } from "@/services";
 
 export default {
   name: "DogView",
-  
+
   components: {
     PedigreeTable,
-    
   },
   data() {
     return {
       dogs: [],
+      kennels: [],
     };
-    
   },
 
   created() {
-    this._id = localStorage.getItem("dogId");
-    console.log("ovo je " + this._id);
-    this.dogFetch(this._id);
+    this.pas_id = localStorage.getItem("dogId");
+    
+    this.uzg_id = localStorage.getItem("kennelId");
+    
+    console.log("ovo je pas" + this.pas_id);
+    console.log("ovo je uzg" + this.uzg_id);
+    this.dogFetch(this.pas_id);
+    this.kennelFetch(this.uzg_id);
   },
   methods: {
     /*async fetchDogsAll() {
       const response = await service.get("/api/getAll");
       this.dogs2 = response.data;
       console.log(this.dogs2);*/
-    
-      async dogFetch(_id) {
+
+    async dogFetch(pas_id) {
       try {
-        let response = await dogFetch.fetchDog(_id
-        );   
+        let response = await dogFetch.fetchDog(pas_id);
         this.dogs = response.data;
-        
-console.log(this.dogs);
+
+        console.log(this.dogs);
       } catch (error) {
         console.log(error);
-      }   },
+      }
+    },
 
-async deleteDog(_id) {
-  try {
-        let response = await dogDelete.deleteDog(_id
-        );   
-        this.odgovor = response.data
-alert(this.odgovor);
-      this.$router.push({ name: "home"});
+    async kennelFetch(uzg_id) {
+      try {
+        let response = await kennelFetch.fetchKennel(uzg_id);
+        this.kennels = response.data;
+
+        console.log(this.kennels);
       } catch (error) {
         console.log(error);
-      }   },
+      }
+    },
 
+    async deleteDog(_id) {
+      try {
+        let response = await dogDelete.deleteDog(_id);
+        this.odgovor = response.data;
+        alert(this.odgovor);
+        this.$router.push({ name: "home" });
+      } catch (error) {
+        console.log(error);
+      }
+    },
 
-async updateDog(_id) {
+    async updateDog(_id) {
       localStorage.setItem("dogId", _id);
 
       this.$router.push({ name: "updateDog", params: { _id } });
-    },},
+    },
+  },
 
-    /*async fetchDogs() {
+  /*async fetchDogs() {
       console.log(this._id);
       let dogs = await service.get("/api/getOne/:id", this._id)
       .then(response => {
