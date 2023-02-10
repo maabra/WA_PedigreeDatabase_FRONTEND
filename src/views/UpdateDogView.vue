@@ -41,15 +41,10 @@
               />
             </div>
             <div class="form-group">
-              <label for="dogKennelField">Ime uzgajivačnice: </label>
-              <input
-                v-model="dogKennel"
-                type="name"
-                class="form-control"
-                id="dogKennelField"
-                aria-describedby="dogKennelHelp"
-                placeholder="Unesite ime uzgajivačnice"
-              />
+              <label for="dogKennelField">Ime uzgajivačnice: </label></div><div>
+              <select v-model="dogKennel">
+                <option v-for="kennel in kennels" :key="JSON.stringify(kennel)" :value="kennel._id">{{kennel.nameKennel}}</option>
+                </select>
             </div>
             <div class="form-group">
               <label for="dogCacibField">Broj osvojenih CACIB-a: </label>
@@ -175,12 +170,13 @@
 </template>
   
   <script>
-import { dogUpdate } from "@/services";
+import { dogUpdate, kennelsAll } from "@/services";
 export default {
   name: "UpdateDog",
   data() {
     return {
       dogs: [],
+      kennels: [],
       dogName: "",
       dogSex: "",
       dogBirth: "",
@@ -201,9 +197,21 @@ export default {
   created() {
     this.pas_id = localStorage.getItem("dogId");
     console.log("ovo je " + this.pas_id);
+    
+    this.allKennels();
   },
   methods: {
 
+    async allKennels() {
+      try {
+        let response = await kennelsAll.allKennels();
+        this.kennels = response.data;
+
+        console.log(this.kennels);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async updateDog() {
       try {
         let updatedog = await dogUpdate.updateDog(
