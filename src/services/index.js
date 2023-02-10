@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let service = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://pedigreedatabasebackend.onrender.com/",
   timeout: 1000,
 });
 
